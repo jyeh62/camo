@@ -27,7 +27,6 @@ dependencies {
 	implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 	implementation 'javax.servlet:jstl'
-	implementation 'com.github.jsimone:webapp-runner:8.5.11.3'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
@@ -44,24 +43,24 @@ compileTestKotlin {
 		jvmTarget = '1.8'
 	}
 }
-
-task stage() {
-    dependsOn clean, bootWar
-}
-war.mustRunAfter clean
-
-task copyToLib(type: Copy) {
-    into "$buildDir/server"
-    from(configurations.compile) {
-        include "webapp-runner*"
-    }
-}
-
-stage.dependsOn(copyToLib)
-
-gradle.taskGraph.whenReady {
-	taskGraph ->
-		if (taskGraph.hasTask(stage)) {
-			test.enabled = false
-		}
-}
+//
+//task stage() {
+//    dependsOn clean, bootWar
+//}
+//war.mustRunAfter clean
+//
+//task copyToLib(type: Copy) {
+//    into "$buildDir/server"
+//    from(configurations.compile) {
+//        include "webapp-runner*"
+//    }
+//}
+//
+//stage.dependsOn(copyToLib)
+//
+//gradle.taskGraph.whenReady {
+//	taskGraph ->
+//		if (taskGraph.hasTask(stage)) {
+//			test.enabled = false
+//		}
+//}

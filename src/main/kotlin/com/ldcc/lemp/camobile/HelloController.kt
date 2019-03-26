@@ -10,7 +10,6 @@ class HelloController {
 
     @GetMapping
     fun hello(): String {
-        System.out.println("hello")
         return "hello"
     }
 }
